@@ -63,7 +63,7 @@ class PostsAPIController extends Controller
        
         
        
-         Mail::to($userData['email'])->send(new WelcomeMail());
+         Mail::to($userData['email'])->send(new WelcomeMail($data));
         // dd($mail);
 
         return response()->json([

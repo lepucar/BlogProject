@@ -52,6 +52,11 @@ class WelcomeMail extends Mailable
         return new Content(
             view: 'mail.posts',
 
+            with: 
+            [
+            'title' => $this->posts->title,
+            ]
+
         );
     }
 
