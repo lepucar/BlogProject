@@ -21,11 +21,11 @@ class WelcomeMail extends Mailable
      * Create a new message instance.
      */
 
-    // private Posts $posts;
+    private Posts $posts;
     
-    public function __construct()
+    public function __construct($posts)
     {
-        // $this->posts = $posts;
+        $this->posts = $posts;
        
     }
 
@@ -36,10 +36,10 @@ class WelcomeMail extends Mailable
     {
         return new Envelope(
 
-            // from: new Address('pukar.bhatta@cosys.com.np', 'Pukar Bhatta'),
-            // replyTo: [
-            //           new Address('pukar.bhatta@cosys.com.np', 'Pukar Bhatta'),
-            //       ],
+            from: new Address('pukar.bhatta@cosys.com.np', 'Pukar Bhatta'),
+            replyTo: [
+                      new Address('pukar.bhatta@cosys.com.np', 'Pukar Bhatta'),
+                  ],
             subject: 'Welcome Mail',
         );
     }
