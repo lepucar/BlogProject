@@ -16,8 +16,8 @@ Route::get('/userLogin', [LoginController::class, 'index'])->name('loginPage');
 Route::post('/userLogin', [LoginController::class, 'login'])->name('login');
 
 Route::get('/register', [UserController::class, 'create'])->name('registerPage');
-ROute::post('/register',  [UserController::class, 'store'])->name('register');
-
+Route::post('/register',  [UserController::class, 'store'])->name('register');
+Route::get('/blogs',  [ApplicationController::class, 'indexForAll'])->name('mainPage-nologin');
 
 Route::group(['namespace' => 'backend', 'prefix' => '', 'middleware' => 'auth' ], function() {
     Route::get('/',  [ApplicationController::class, 'index'])->name('mainPage');

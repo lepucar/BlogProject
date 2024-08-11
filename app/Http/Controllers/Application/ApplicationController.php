@@ -14,9 +14,7 @@ class ApplicationController extends Controller
     public function index()
     {
         if (Auth::user()->name != 'admin'){
-            // $allBlogs = Posts::whereHas('users',function(){
-                
-            // })->get();
+            
             $allBlogs = Posts::all();
             foreach($allBlogs as $blog)
             {
@@ -35,6 +33,20 @@ class ApplicationController extends Controller
             $singleBlog = Posts::select('users.*','posts.*')->where('posts.id', $id)->join('users', 'users.id', '=', 'posts.user_id')->first();
             return view('blogs.blog-details', compact('singleBlog'));
         }
+    }
+
+    public function indexForAll()
+    {
+        
+            $allBlogs = Posts::all();
+            foreach($allBlogs as $blog)
+            {
+                $username = User::find($blog->user_id);
+                $blog->user_name = $username->name;
+            }
+            
+            return view('blogs.blogs', compact('allBlogs'));
+        
     }
 
     
