@@ -6,6 +6,8 @@
 
 <form method="post" action="{{route('login')}}">
     @csrf
+
+    
     <div class="mb-3">
         <label for="email" class="form-label">Email
             <span class="text-danger">{{$errors->first('email')}}</span>
